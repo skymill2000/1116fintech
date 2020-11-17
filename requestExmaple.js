@@ -5,5 +5,4 @@ request('http://newsapi.org/v2/top-headlines?country=kr&category=health&apiKey=7
   articles.map((art) => {
     console.log(art.title);
   })
-
 });
