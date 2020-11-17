@@ -41,3 +41,4 @@ console.log(cars);
 console.log(cars[1].name);
 
 //work3 자동차 이름이 bmw 가 있으면 '!' 출력해주세요; (for / if) 
+
