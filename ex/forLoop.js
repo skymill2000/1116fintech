@@ -6,4 +6,9 @@ for (i = 0; i < cars.length; i++) {
 	text += cars[i];
 }
 
+// es6 map func 활용 예제
+// cars.map((car)=>{
+//     console.log(car);
+// })
+
 console.log(text);
