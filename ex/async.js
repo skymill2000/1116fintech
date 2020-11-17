@@ -10,7 +10,8 @@ fs.readFile('./example/test.txt', 'utf8', function (err, result) {
     else {
         console.error("두번째");
         console.log(result);
+        console.log('마지막')
     }
 });
 
-console.log('마지막')
+

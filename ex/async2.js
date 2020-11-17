@@ -16,6 +16,21 @@ function cFunc() {
     },500)
 }
 
-aFunc();
-bFunc();
-cFunc();
+function callbackFunc() {
+    setTimeout(function () {
+        console.log('a');
+        setTimeout(function () {
+            console.log('b');
+            setTimeout(function () {
+                console.log('c');
+            },500)       
+        },1000)    
+    },1700)
+    //callback hell 
+    // promise / async, await / lib async
+}
+
+// aFunc();
+// bFunc();
+// cFunc();
+callbackFunc();
