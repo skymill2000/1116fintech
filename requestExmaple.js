@@ -1,6 +1,4 @@
 const request = require('request');
-request('http://www.naver.com', function (error, response, body) {
-  console.error('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+request('http://newsapi.org/v2/top-headlines?country=kr&category=health&apiKey=78bc6ddd8cdb48ceac76f5f9b9dfc4c5', function (error, response, body) {
+  console.log('body:', body); 
 });
