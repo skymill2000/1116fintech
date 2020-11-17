@@ -1,4 +1,4 @@
-var car = {
+var car1 = {
 	name : "sonata",
 	ph : "500ph",
 	start : function () {
@@ -21,8 +21,8 @@ var car2 = {
 	}
 }
 
-console.log(car.name);
-car.start();
+var cars = [car1, car2]
+console.log(cars);
 
-console.log(car2.name);
-car2.start();
+//work2 자동차 2번째 요소에 이름을 출력하세요;
+console.log(?);
