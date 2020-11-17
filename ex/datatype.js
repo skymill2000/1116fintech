@@ -6,9 +6,7 @@ var lastName = "Johnson"; // String
 //public int length = 16;
 //public String lastName = "John"
 //public Person person = new Person('관우');
-
 var x = { firstName: "John", lastName: "Doe" }; // Object
-
 var x = 16 + "Volvo";
 console.log(x);
 var y = "16" + "Volvo";
