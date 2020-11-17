@@ -15,7 +15,7 @@ function div(p1, p2) {
 }
 //#work 1 더하기, 나누기, 빼기 기능 작성
 //es6
-const div2 = (p1, p2) =>{
+const div2 = (p1, p2) => {
     return p1 / p2;
 }
 
