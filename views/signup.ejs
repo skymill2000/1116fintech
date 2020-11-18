@@ -325,6 +325,10 @@
     <script src="js/global.script.js"></script>
     <script>
       $("#authBtn").click(function () {
+        var apiKey = "q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF"
+        //#자기 키로 시크릿 변경
+        var tmpWindow = window.open("about:blank");
+        tmpWindow.location = "https://testapi.openbanking.or.kr/oauth/2.0/authorize?response_type=code&client_id="+apiKey+"&redirect_uri=http://localhost:3000/authResult&scope=login inquiry transfer&state=12345678901234567890123456789012&auth_type=0"
       });
       $("#signupBtn").click(function () {
         //#signup Post 라우터에 데이터 전송!

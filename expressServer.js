@@ -9,6 +9,11 @@ app.use(express.urlencoded({ extended: false })); // urlencoded 타입의 데이
 
 app.use(express.static(__dirname + '/public')); //디자인 파일이 위치할 정적 요소들을 저장하는 디렉토리
 
+app.get('/test', function(req, res){
+  res.render('blank');
+})
+
+
 app.get('/signup', function(req, res){
   res.render('signup');
 })
