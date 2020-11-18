@@ -2,6 +2,17 @@ const express = require('express')
 const app = express()
 const request = require('request');
 
+//------------------database 연결 ----------------------
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost', //서버의 주소
+  user     : 'root', // 접근 계정 이름
+  password : '1q2w3e4r', // 계정 비밀번호
+  database : 'fintech1116' // 데이터베이스 이름
+});
+connection.connect();
+//------------------database 연결 ----------------------
+
 app.set('views', __dirname + '/views');//랜더링할 파일이 있는 디렉토리 
 app.set('view engine', 'ejs'); // 사용하는 뷰 엔진
 
@@ -54,8 +65,13 @@ app.post('/signup', function(req, res){
   var userAccessToken = req.body.userAccessToken;
   var userRefreshToken = req.body.userRefreshToken;
   var userSeqNo = req.body.userSeqNo;
-
-  
+  var insertUserSql = "INSERT INTO user (`name`, `email`, `accesstoken`, `refreshtoken`, `userseqno`, `password`) VALUES (?, ?, ?, ?, ?, ?)"
+  connection.query(insertUserSql,[userName, userEmail, userAccessToken, userRefreshToken, userSeqNo, userPassword], function (error, results, fields) {
+    if (error) throw error;
+    else {
+      res.json(1);
+    }
+  });
 })
 
 app.listen(3000, function(){
