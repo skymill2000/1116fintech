@@ -46,6 +46,18 @@ app.get('/authResult', function(req, res){
   });
 })
 
+app.post('/signup', function(req, res){
+  console.log(req.body);
+  var userName = req.body.userName;
+  var userPassword = req.body.userPassword;
+  var userEmail = req.body.userEmail;
+  var userAccessToken = req.body.userAccessToken;
+  var userRefreshToken = req.body.userRefreshToken;
+  var userSeqNo = req.body.userSeqNo;
+
+  
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })
