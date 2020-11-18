@@ -2,13 +2,13 @@
 <body>
     <h1 class="testClass">안녕하세요</h1>
     <h2 class="testClass">html 기본 입니다.</h2>
-    <input type="text"> 아이디 <br>
-    <input type="pasword"> 패스워드 <br>
-    <button type="button">로그인</button>
+    <input type="text" id="userId"> 아이디 <br>
+    <input type="pasword" id="userPassword"> 패스워드 <br>
+    <button type="button" id="loginBtn">로그인</button>
 </body>
 
 <style>
-    body {
+    /* body {
       background-color: rgb(108, 211, 116);
     }
     
@@ -23,7 +23,7 @@
     }
     .testClass {
         color : #ffffff
-    }
+    } */
 </style>
     
 <script
@@ -31,5 +31,10 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous">
 </script>
+<script>
+    $("#loginBtn").click(function(){
+        alert("로그인 버튼")
+    })
 
+</script>
 </html>
