@@ -20,6 +20,9 @@ app.get('/ejs', function(req, res){
 })
 
 app.post('/getTestData', function(req, res){
+  console.log(req.body);
+  console.log("사용자 아이디는?", req.body.sendUserId);
+  console.log("사용자 패스워드는?", req.body.sendUserPassword);
   res.json('요청 잘 왔습니다');
 })
  
