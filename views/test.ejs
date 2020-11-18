@@ -3,7 +3,7 @@
     <h1 class="testClass">안녕하세요</h1>
     <h2 class="testClass">html 기본 입니다.</h2>
     <input type="text" id="userId"> 아이디 <br>
-    <input type="pasword" id="userPassword"> 패스워드 <br>
+    <input type="password" id="userPassword"> 패스워드 <br>
     <button type="button" id="loginBtn">로그인</button>
 </body>
 
@@ -33,7 +33,9 @@
 </script>
 <script>
     $("#loginBtn").click(function(){
-        alert("로그인 버튼")
+        var userId = $("#userId").val();
+        var userPassword = $("#userPassword").val();
+        alert(userId+" "+userPassword);
     })
 
 </script>
