@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
  
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
+app.set('views', __dirname + '/views');//랜더링할 파일이 있는 디렉토리 
+app.set('view engine', 'ejs'); // 사용하는 뷰 엔진
 
 app.get('/', function (req, res) {
   res.send('Hello World')
