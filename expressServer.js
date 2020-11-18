@@ -40,8 +40,9 @@ app.get('/authResult', function(req, res){
     }
   }
   request(option, function (error, response, body) {
-    console.log(body);
-    res.json(body);
+    var accessRequestResult = JSON.parse(body);
+    console.log(accessRequestResult);
+    res.render("resultChild", { data: accessRequestResult });
   });
 })
 
