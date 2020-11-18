@@ -35,8 +35,19 @@
     $("#loginBtn").click(function(){
         var userId = $("#userId").val();
         var userPassword = $("#userPassword").val();
-        alert(userId+" "+userPassword);
-    })
+        console.log(userId+" "+userPassword);
+        $.ajax({
+            url:'/getTestData',
+            type : 'POST',
+            data : {
+              sendUserId : userId,
+              sendUserPassword : userPassword
+            },
+            success:function(data){
+                alert(data);
+            }
+        })
 
+    })
 </script>
 </html>
