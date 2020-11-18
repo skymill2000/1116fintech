@@ -77,6 +77,29 @@ app.post('/signup', function(req, res){
   });
 })
 
+app.post('/login', function(req, res){
+  var userEmail = req.body.userEmail;
+  var userPassword = req.body.userPassword;
+  var searchEmailSql = "SELECT * FROM user WHERE email = ?";
+  connection.query(searchEmailSql,[userEmail, userPassword], function (error, results, fields) {
+    if (error) throw error;
+    else {
+      if(results.length == 0){
+        res.json("회원이 존재하지 않습니다")
+      }
+      else {
+        var storedUserPassword = results[0].password;
+        if(storedUserPassword == userPassword){
+          //로그인 완료
+        }
+        else {
+          //로그인 실패
+        }
+      }
+    }
+  });
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })
