@@ -112,6 +112,7 @@ app.post('/login', function(req, res){
 
         }
         else {
+          res.json("비밀번호를 잘못 입력했습니다");
           //로그인 실패
         }
       }
