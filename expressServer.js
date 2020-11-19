@@ -160,6 +160,13 @@ app.post('/list', auth, function(req, res){
   })
 })
 
+app.post('/balance',auth, function(req, res){
+  //api에 balance 요청을 만들고 res.json() 응답 하세요;
+  var countnum = Math.floor(Math.random() * 1000000000) + 1;
+  var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
+
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })
