@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const request = require('request');
 const jwt = require('jsonwebtoken');
+const auth = require('./lib/auth');
 
 //------------------database 연결 ----------------------
 var mysql      = require('mysql');
@@ -26,7 +27,7 @@ var clientId = "q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF" // 클라이언트 아
 var clientSecret = "yVT6irMr2h4ZTHzZY7sDpbvhm1nlOzr4nP7DYRVy" // 클라이언트 시크릿 변경
 
 app.get('/test', function(req, res){
-  res.render('blank');
+  res.json('로그인 된 사용자가 보는 화면');
 })
 
 app.get('/signup', function(req, res){
