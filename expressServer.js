@@ -194,6 +194,44 @@ app.post('/balance',auth, function(req, res){
   })
 })
 
+app.post('/transactionList',auth, function(req, res){
+  var finusenum = req.body.fin_use_num;
+  var countnum = Math.floor(Math.random() * 1000000000) + 1;
+  var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
+  var userId = req.decoded.userId;
+  var userSelectSql = "SELECT * FROM user WHERE id = ?";
+  connection.query(userSelectSql, [userId], function(err, results){
+    if(err){throw err}
+    else {
+      var userAccessToken = results[0].accesstoken;
+      var userSeqNo = results[0].userseqno;
+      var option = {
+        method : "GET",
+        url : "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
+        headers : {
+          Authorization : "Bearer " + userAccessToken
+        },
+        //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
+        qs : {
+          bank_tran_id: transId,
+          fintech_use_num:finusenum,
+          inquiry_type:"A",
+          inquiry_base:"D",
+          from_date:"20190101",
+          to_date:"20190101",
+          sort_order:"D",
+          tran_dtime:"20201119143320"
+        }
+      }
+      request(option, function (error, response, body) {
+        var transactionListResult = JSON.parse(body);
+        console.log(transactionListResult);
+        res.json(transactionListResult)
+      });
+    }    
+  })
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })
