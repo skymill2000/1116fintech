@@ -126,6 +126,25 @@ app.post('/login', function(req, res){
   });
 })
 
+app.post('/list', auth, function(req, res){
+  //user/me 요청 만들기
+  var option = {
+    method : "",
+    url : "",
+    headers : {
+    },
+    //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
+    form : {
+    }
+  }
+  request(option, function (error, response, body) {
+    var listResult = JSON.parse(body);
+    console.log(accessRequestResult);
+    res.json(listResult)
+  });
+
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })
