@@ -26,7 +26,8 @@ app.use(express.urlencoded({ extended: false })); // urlencoded 타입의 데이
 var clientId = "q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF" // 클라이언트 아이디 변경
 var clientSecret = "yVT6irMr2h4ZTHzZY7sDpbvhm1nlOzr4nP7DYRVy" // 클라이언트 시크릿 변경
 
-app.get('/test', function(req, res){
+app.get('/test',auth ,function(req, res){
+  console.log(req.decoded);
   res.json('로그인 된 사용자가 보는 화면');
 })
 
