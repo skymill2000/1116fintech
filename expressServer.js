@@ -129,17 +129,21 @@ app.post('/login', function(req, res){
 app.post('/list', auth, function(req, res){
   //user/me 요청 만들기
   var option = {
-    method : "",
-    url : "",
+    method : "GET",
+    url : "https://testapi.openbanking.or.kr/v2.0/user/me",
     headers : {
+      //토큰
+      Authorization : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwMDM0NzM2Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MTM0NTc4ODksImp0aSI6ImY3MzdmNTFmLWIxNzAtNDM0NS04ODIyLTc1MGUxMmEyYzJiMyJ9.Se9yKsIuxgdkO2SClGBomNdi6gGiWHnFKISyr79GmPY"
     },
     //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
-    form : {
+    qs : {
+      user_seq_no : "1100034736"
+      //????
     }
   }
   request(option, function (error, response, body) {
     var listResult = JSON.parse(body);
-    console.log(accessRequestResult);
+    console.log(listResult);
     res.json(listResult)
   });
 
