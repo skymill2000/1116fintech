@@ -162,9 +162,36 @@ app.post('/list', auth, function(req, res){
 
 app.post('/balance',auth, function(req, res){
   //api에 balance 요청을 만들고 res.json() 응답 하세요;
+  var finusenum = req.body.fin_use_num;
   var countnum = Math.floor(Math.random() * 1000000000) + 1;
   var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
-
+  var userId = req.decoded.userId;
+  var userSelectSql = "SELECT * FROM user WHERE id = ?";
+  connection.query(userSelectSql, [userId], function(err, results){
+    if(err){throw err}
+    else {
+      var userAccessToken = results[0].accesstoken;
+      var userSeqNo = results[0].userseqno;
+      var option = {
+        method : "GET",
+        url : "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+        headers : {
+          Authorization : "Bearer " + userAccessToken
+        },
+        //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
+        qs : {
+          bank_tran_id : transId,
+          fintech_use_num : finusenum,
+          tran_dtime : "20201119133400"
+        }
+      }
+      request(option, function (error, response, body) {
+        var balanceResult = JSON.parse(body);
+        console.log(balanceResult);
+        res.json(balanceResult)
+      });
+    }    
+  })
 })
 
 app.listen(3000, function(){
