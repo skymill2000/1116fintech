@@ -241,8 +241,31 @@ app.post('/transactionList',auth, function(req, res){
 })
 
 app.post('/withdraw', auth, function(req, res){
-  console.log(req.body);
-  //출금이체 발생 api 실행
+  var finusenum = req.body.fin_use_num;
+  var tofinusenum = req.body.to_fin_use_num;
+  var countnum = Math.floor(Math.random() * 1000000000) + 1;
+  var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
+  var userId = req.decoded.userId;
+  var userSelectSql = "SELECT * FROM user WHERE id = ?";
+  connection.query(userSelectSql, [userId], function(err, results){
+    if(err){throw err}
+    else {
+      var userAccessToken = results[0].accesstoken;
+      var userSeqNo = results[0].userseqno;
+      var option = {
+        method : "",
+        url : "",
+        headers : {
+          Authorization : "Bearer " + userAccessToken
+        },
+        //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
+        qs : {
+        }
+      }
+      request(option, function (error, response, body) {
+      });
+    }    
+  })
 })
 
 app.listen(3000, function(){
