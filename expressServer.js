@@ -240,6 +240,11 @@ app.post('/transactionList',auth, function(req, res){
   })
 })
 
+app.post('/withdraw', auth, function(req, res){
+  console.log(req.body);
+  //출금이체 발생 api 실행
+})
+
 app.listen(3000, function(){
     console.log('서버가 3000번 포트에서 실행중 입니다.');
 })

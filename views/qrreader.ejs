@@ -336,7 +336,7 @@
       function pay(finusenum) {
         console.log(finusenum + "");
         $.ajax({
-          url: "http://localhost:3000/withdraw",
+          url: "/withdraw",
           type: "POST",
           headers: {
             ourtoken: jwtToken,
