@@ -280,10 +280,44 @@ app.post('/withdraw', auth, function(req, res){
       }
       request(option, function (error, response, body) {
         console.log(body);
-        res.json(body);
-        //#work-final------------------------
-        //-              code....           -
-        //#work-final------------------------
+        if(body.rsp_code ="A0000"){
+          var countnum2 = Math.floor(Math.random() * 1000000000) + 1;
+          var transId2 = "T991599190U" + countnum; //이용기과번호 본인것 입력
+          var option = {
+            method : "POST",
+            url : "https://testapi.openbanking.or.kr/v2.0/transfer/deposit/fin_num",
+            headers : {
+              Authorization : "Bearer " + userAccessToken
+            },
+            //get 요청을 보낼때 데이터는 qs, post 에 form, json 입력가능
+            json : {
+              "cntr_account_type": "N",
+              "cntr_account_num": "4262679045",
+              "wd_pass_phrase": "NONE",
+              "wd_print_content": "환불금액",
+              "name_check_option": "on",
+              "tran_dtime": "20201120131900",
+              "req_cnt": "1",
+              "req_list": [
+                {
+                  "tran_no": "1",
+                  "bank_tran_id": transId2,
+                  "fintech_use_num": tofinusenum,
+                  "print_content": "쇼핑몰환불",
+                  "tran_amt": amount,
+                  "req_client_name": "홍길동",
+                  "req_client_num": "HONGGILDONG1234",
+                  "req_client_fintech_use_num": finusenum,
+                  "transfer_purpose": "ST"
+                }
+              ]
+            }
+          }
+          request(option, function (error, response, body) {
+            console.log(body);
+            res.json(body);
+          });
+        }
       });
     }    
   })
